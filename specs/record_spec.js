@@ -1,5 +1,5 @@
 const assert = require("assert");
-const Record = require("../record.js");
+const Record = require("../Record.js");
 
 describe("Record", function(){
 
@@ -23,6 +23,11 @@ describe("Record", function(){
 
   it('Record has a price', function(){
     assert.strictEqual(record.price,15);
+  })
+
+  it('Can print out a records property', function(){
+    const expected = "Artist: Miike Snow, Title: iii, Genre: Indie Rock, Costs: £15";
+    assert.deepStrictEqual(record.printProperties(), expected);
   })
 
 })
