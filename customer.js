@@ -29,7 +29,13 @@ Customer.prototype.sellRecord = function (store, recordtoSell) {
     //push it to the stores inventory array
     store.inventory.push(recordtoSell);
   }
+};
 
+Customer.prototype.totalValueOfCollection = function () {
+  var amounts = _.map(this.inventory, function(record){
+    return record.price;
+  });
+  return _.sum(amounts)
 };
 
 

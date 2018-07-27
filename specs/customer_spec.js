@@ -51,9 +51,25 @@ describe("Customer", function(){
     customer.buyRecord(record2);
     customer.sellRecord(store, record2);
     assert.deepStrictEqual(customer.wallet, 35);
-    console.log(customer.inventory);
+    // console.log(customer.inventory);
     assert.deepStrictEqual(customer.inventory, [record1]);
   })
+
+  it('total value of customers collection', function() {
+    customer.buyRecord(record1);
+    customer.buyRecord(record2);
+    assert.deepStrictEqual(customer.totalValueOfCollection(), 25);
+  })
+
+  it('total value of all records of a given Genre')
+
+  it('view their most valuable record')
+
+  it('sort their records by value. Ascending')
+
+  it('sort their records by value. Descending')
+
+  it('compare the value of their collection with another RecordCollector')
 
 
 
