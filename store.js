@@ -19,6 +19,16 @@ Store.prototype.sellRecord = function (record) {
   this.till += record.price
 };
 
+Store.prototype.getFinancialSituation = function () {
+  // loop through all the Inventory
+  var amounts = _.map(this.inventory, function(record){
+    //find the price
+    return record.price;
+  });
+  // add all the record prices together
+  //return the total alongside the balance of the till
+  return ('The store balance is ' + this.till + '. The inventory value is '+ _.sum(amounts) + '.');
+};
 
 
 module.exports = Store;
