@@ -3,7 +3,7 @@ const _ = require("lodash");
 const Store = function(name, city){
   this.name = name;
   this.city = city;
-  this.till = 0;
+  this.till = 500;
   this.inventory = [];
 }
 

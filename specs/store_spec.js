@@ -28,7 +28,7 @@ describe("Store", function(){
   })
 
   it('Store has a till balance', function(){
-    assert.deepStrictEqual(store.till, 0);
+    assert.deepStrictEqual(store.till, 500);
   })
 
   it('Can add a record to the Stores inventory', function(){
@@ -51,7 +51,7 @@ describe("Store", function(){
 
   it('Store can sell a record', function(){
     store.sellRecord(record);
-    assert.deepStrictEqual(store.till, 15);
+    assert.deepStrictEqual(store.till, 515);
   })
 
   it('reports the financial situation of the Store', function() {
@@ -60,7 +60,7 @@ describe("Store", function(){
     store.addRecord(record3);
     store.addRecord(record4);
     store.sellRecord(record2);
-    const expected = 'The store balance is 10. The inventory value is 54.';
+    const expected = 'The store balance is 510. The inventory value is 54.';
     assert.deepStrictEqual(store.getFinancialSituation(), expected);
   })
 
