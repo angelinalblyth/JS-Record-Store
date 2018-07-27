@@ -11,7 +11,7 @@ describe("Store", function(){
     store = new Store("Superfly Records", "Glasgow");
     record = new Record("Miike Snow", "iii", "Indie Rock", 15);
     record2 = new Record("Tame Impala", "Currents", "Spacy", 10);
-    record3 = new Record("The Neighbourhood", "I Love You", "Indie", 12);
+    record3 = new Record("The Neighbourhood", "I Love You", "Indie Rock", 12);
     record4 = new Record("Twenty One Pilots", "Blurryface", "Rock", 17);
   })
 
@@ -64,6 +64,13 @@ describe("Store", function(){
     assert.deepStrictEqual(store.getFinancialSituation(), expected);
   })
 
-  it('view all Records of a given Genre')
+  it('view all Records of a given Genre', function(){
+    store.addRecord(record);
+    store.addRecord(record2);
+    store.addRecord(record3);
+    store.addRecord(record4);
+    const expected = [record, record3];
+    assert.deepStrictEqual(store.filterInventory('Indie Rock'), expected);
+  })
 
 })

@@ -30,5 +30,13 @@ Store.prototype.getFinancialSituation = function () {
   return ('The store balance is ' + this.till + '. The inventory value is '+ _.sum(amounts) + '.');
 };
 
+Store.prototype.filterInventory = function (genre) {
+  if(!genre) return this.inventory;
+  return _.filter(this.inventory, function(record) {
+    return record.genre === genre;
+  });
+},
+
+
 
 module.exports = Store;
