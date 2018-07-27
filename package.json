@@ -1,0 +1,11 @@
+{
+  "name": "cc-homework-wk11-day5",
+  "version": "1.0.0",
+  "description": "Stevie is following his dream and starting that record store he's always talking about! :minidisc: :minidisc: :minidisc:",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha specs"
+  },
+  "author": "",
+  "license": "ISC"
+}
