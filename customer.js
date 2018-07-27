@@ -38,5 +38,16 @@ Customer.prototype.totalValueOfCollection = function () {
   return _.sum(amounts)
 };
 
+Customer.prototype.filterCollection = function (genre) {
+  if(!genre) return this.inventory;
+  return _.filter(this.inventory, function(record) {
+    return record.genre === genre;
+  });
+},
+
+Customer.prototype.viewMostValuable = function () {
+  return _.maxBy(this.inventory, "price");
+};
+
 
 module.exports = Customer;

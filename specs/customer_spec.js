@@ -61,9 +61,25 @@ describe("Customer", function(){
     assert.deepStrictEqual(customer.totalValueOfCollection(), 25);
   })
 
-  it('total value of all records of a given Genre')
+  it('total value of all records of a given Genre', function(){
+    customer.buyRecord(record1);
+    customer.buyRecord(record2);
+    customer.buyRecord(record3);
+    customer.buyRecord(record4);
+    const expected = [record1, record3];
+    assert.deepStrictEqual(customer.filterCollection('Indie Rock'), expected);
+  })
 
-  it('view their most valuable record')
+  it('view their most valuable record', function(){
+    customer = new Customer("Bob", 500);
+    customer.buyRecord(record1);
+    customer.buyRecord(record2);
+    customer.buyRecord(record3);
+    customer.buyRecord(record4);
+    console.log(customer.inventory);
+    const expected = record4;
+    assert.deepStrictEqual(customer.viewMostValuable(), expected);
+  })
 
   it('sort their records by value. Ascending')
 
