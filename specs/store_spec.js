@@ -5,11 +5,12 @@ const Record = require("../Record.js");
 describe("Store", function(){
 
   let store;
-  let record;
+  let record, record2;
 
   beforeEach(function(){
-    store = new Store("Superfly Records", "Glasgow", 500);
+    store = new Store("Superfly Records", "Glasgow");
     record = new Record("Miike Snow", "iii", "Indie Rock", 15);
+    record2 = new Record("Tame Impala", "Currents", "Spacy", 10);
   })
 
   it('Store has a name', function(){
@@ -25,7 +26,7 @@ describe("Store", function(){
   })
 
   it('Store has a till balance', function(){
-    assert.deepStrictEqual(store.till, 500);
+    assert.deepStrictEqual(store.till, 0);
   })
 
   it('Can add a record to the Stores inventory', function(){
@@ -38,5 +39,17 @@ describe("Store", function(){
   // store.removeRecord(record);
   // assert.deepStrictEqual(store.inventory.length, 0)
 
-  
+  it('Can view all properties of inventory', function(){
+    store.addRecord(record);
+    store.addRecord(record2)
+    const expected = ["Artist: Miike Snow, Title: iii, Genre: Indie Rock, Costs: £15", "Artist: Tame Impala, Title: Currents, Genre: Spacy, Costs: £10"];
+    const actual = store.getAllInventoryProperty()
+    assert.deepStrictEqual(actual, expected)
+  })
+
+  it('Store can sell a record', function(){
+    store.sellRecord(record);
+    assert.deepStrictEqual(store.till, 15);
+  })
+
 })
