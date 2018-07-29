@@ -76,17 +76,50 @@ describe("Customer", function(){
     customer.buyRecord(record2);
     customer.buyRecord(record3);
     customer.buyRecord(record4);
-    console.log(customer.inventory);
+    //console.log(customer.inventory);
     const expected = record4;
     assert.deepStrictEqual(customer.viewMostValuable(), expected);
   })
 
-  it('sort their records by value. Ascending')
+  it('sort their records by value. Ascending', function(){
+    customer = new Customer("Bob", 500);
+    customer.buyRecord(record1);
+    customer.buyRecord(record2);
+    customer.buyRecord(record3);
+    customer.buyRecord(record4);
+    const expected = [record2, record3, record1, record4];
+    assert.deepStrictEqual(customer.sortRecords("price", "asc"), expected);
+  })
 
-  it('sort their records by value. Descending')
+  it('sort their records by value. Descending', function() {
+    customer = new Customer("Bob", 500);
+    customer.buyRecord(record1);
+    customer.buyRecord(record2);
+    customer.buyRecord(record3);
+    customer.buyRecord(record4);
+    const expected = [record4, record1, record3, record2];
+    assert.deepStrictEqual(customer.sortRecords("price","desc"), expected);
+  })
 
-  it('compare the value of their collection with another RecordCollector')
+  it('compare the value of their collection with another RecordCollector', function(){
+    customer1 = new Customer("Angelina", 500);
+    customer2 = new Customer("Bob", 500);
 
+    customer1.inventory.push(record1);
+    customer2.inventory.push(record2);
+    assert.deepStrictEqual(customer1.compareInventoryValue(customer2), "Angelina's collection is more valuable");
+    assert.deepStrictEqual(customer2.compareInventoryValue(customer1), "Bob's collection is more valuable");
+  })
 
+  xit('bring back what CDs two customers have in common', function(){
+    customer1 = new Customer("Angelina", 500);
+    customer2 = new Customer("Bob", 500);
 
+    customer1.inventory.push(record1);
+    customer1.inventory.push(record2);
+    customer2.inventory.push(record2);
+
+    const expected = [record2];
+    assert.deepStrictEqual(customer1.compareInventory(customer2), expected);
+  })
 })

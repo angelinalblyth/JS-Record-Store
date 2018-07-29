@@ -49,5 +49,22 @@ Customer.prototype.viewMostValuable = function () {
   return _.maxBy(this.inventory, "price");
 };
 
+Customer.prototype.sortRecords = function (property, sortBy) {
+  return _.orderBy(this.inventory,[property], sortBy)
+};
+
+Customer.prototype.compareInventoryValue = function (customer) {
+  if(customer.totalValueOfCollection > this.totalValueOfCollection){
+    return (customer.name + "'s collection is more valuable")
+  }else {
+    return (this.name + "'s collection is more valuable")
+  }
+};
+
+// Customer.prototype.compareInventory = function (customer) {
+//
+
+// };
+
 
 module.exports = Customer;
