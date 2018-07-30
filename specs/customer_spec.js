@@ -61,6 +61,7 @@ describe("Customer", function(){
     assert.deepStrictEqual(customer.totalValueOfCollection(), 25);
   })
 
+//Read this wrong and doesnt return the value. :/ 
   it('total value of all records of a given Genre', function(){
     customer.buyRecord(record1);
     customer.buyRecord(record2);
